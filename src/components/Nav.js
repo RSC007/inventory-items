@@ -34,6 +34,11 @@ const MyNav = (props) => {
                 Edit List
               </Link>
             </NavItem>
+            <NavItem>
+              <Link className="nav-link" to="/deleted-lists">
+                Deleted List
+              </Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>

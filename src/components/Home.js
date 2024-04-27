@@ -1,7 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Table, Card, CardBody } from "reactstrap";
+import { selectedInvetory } from "../redux/slice/inventorySlice";
 
 const Home = (props) => {
+  const { inventoryItmes = [] } = useSelector(selectedInvetory);
+  const navigate = useNavigate();
+
+  const onVisit = (path = "") => {
+    navigate(path);
+  };
+
   return (
     <div>
       <h2 className="App-header mb-3">Inventory List</h2>
@@ -17,24 +27,21 @@ const Home = (props) => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Item 1</td>
-                  <td>4</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Item 2</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Item 3</td>
-                  <td>2</td>
-                </tr>
+                {inventoryItmes?.map((item, index) => (
+                  <tr key={index}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{item?.name}</td>
+                    <td>{item?.quantity}</td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
-            <button className="btn btn-primary">Edit List</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => onVisit("/lists")}
+            >
+              Edit List
+            </button>
           </CardBody>
         </Card>
       </div>

@@ -1,0 +1,26 @@
+.quantity-container {
+  display: flex;
+  gap: 12px;
+}
+
+.quantity-action-container {
+  position: relative;
+  display: flex;
+  gap: 12px;
+}
+
+.quantity-increase,
+.quantity-decrease {
+  position: absolute;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.quantity-increase {
+  top: -12px;
+}
+
+.quantity-decrease {
+  transform: rotate(180deg);
+  bottom: -18px;
+}
